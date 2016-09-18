@@ -1,0 +1,23 @@
+gdefine factorial 1 "
+    print $PARAM0
+    set #one 1
+    = #PARAM0 #one #bool
+    if #bool \"
+        gset #return 1
+        return
+    \"
+    print #PARAM0
+    print #one
+    - #PARAM0
+    #one #tmp
+
+    set #str \"Are we here?\"
+    print #str
+    factorial #tmp
+    * #PARAM0 #return #out
+    gset #return #out
+    print #return
+"
+
+factorial 5
+print $return

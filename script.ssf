@@ -1,23 +1,48 @@
-gdefine factorial 1 "
-    print $PARAM0
+// "[int var] returns in global #return"
+gdefine factorial 1 true "
     set #one 1
-    = #PARAM0 #one #bool
-    if #bool \"
+    = $PARAM0 $one #bool
+    if $bool \"
         gset #return 1
         return
     \"
-    print #PARAM0
-    print #one
-    - #PARAM0
-    #one #tmp
+    - $PARAM0 $one #tmp
 
-    set #str \"Are we here?\"
-    print #str
-    factorial #tmp
-    * #PARAM0 #return #out
-    gset #return #out
-    print #return
+    factorial $tmp
+    * $PARAM0 $return #out
+    gset #return $out
 "
 
 factorial 5
-print $return
+println $return
+println "Hello!"
+
+set #t 10
+set #i 0
+set #bool true
+while #bool "
+    println $i
+    + $i 1 #i
+    < $i $t #bool
+"
+
+println ""
+
+set #str This
+substr $str 1 -1 #str
++ $str " is" #str
+
+println $str
+
+// "[var_name, initial value, test expression, code]"
+define for 4 false "
+    set $PARAM0 $PARAM1
+    set #bool true
+    exec false $PARAM2
+    while #bool \"
+        exec false $PARAM3
+        exec false $PARAM2
+    \"
+"
+
+for #i 0 "< $i 5 #bool" "println $i + $i 1 #i floattoint $i #i"

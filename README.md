@@ -11,11 +11,11 @@ All lines in SimpleScript begin with a function name. For example:
 
 After the function name, you must put a valid number of parameters for the function. For example, "set" has 2 parameters. Parameters must either be a value or a variable. To pass a value to the function, simply type in the value. If the value has spaces, surround it in quotation marks. If the value has quotation marks around it, but contains quotation marks within it, use backslash (\) to escape it. Just remember to add an extra backslash for each layer deep you go, if you are writing code.
 
-set #this "test stuff! \""
+	set #this "test stuff! \""
 
 Once a variable is set, it may be used as its value by prefacing it with a dollar sign ($).
 
-set #other $this
+	set #other $this
 
 When a function asks for a variable name, it must begin with a pound (#).
 
